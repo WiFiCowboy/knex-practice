@@ -56,4 +56,4 @@ function totalCost() {
     });
 }
 
-// totalCost()
+totalCost()
