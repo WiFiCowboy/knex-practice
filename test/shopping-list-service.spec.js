@@ -113,9 +113,10 @@ describe("shopping list service object", function () {
         });
     });
 
-    // Fails test
     context(`Given 'shopping_list' has no data`, () => {
+      // beforeEach to clear test db
       beforeEach(() => db("shopping_list").truncate());
+      // db was returning testShoppingList without beforeEach()
       it(`getAllItems() resolves an empty array`, () => {
         return ShoppingListService.getAllItems(db).then(actual => {
           expect(actual).to.eql([]);
