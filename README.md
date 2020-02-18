@@ -1,2 +1,3 @@
 # Knex-Practice
-## worked on by Rupali and Humberto
+
+## worked on by Rupali R. and Humberto
