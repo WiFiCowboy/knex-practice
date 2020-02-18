@@ -1,7 +1,7 @@
 const ShoppingListService = require("../src/shopping-list-service");
 const knex = require("knex");
 
-describe("shopping list service object", function() {
+describe("shopping list service object", function () {
   let db;
 
   let testShoppingList = [
@@ -113,34 +113,36 @@ describe("shopping list service object", function() {
         });
     });
 
-    // context(`Given 'shopping_list' has no data`, () => {
-    //   it(`getAllItems() resolves an empty array`, () => {
-    //     return ShoppingListService.getAllItems(db).then(actual => {
-    //       expect(actual).to.eql([]);
-    //     });
-    //   });
+    // Fails test
+    context(`Given 'shopping_list' has no data`, () => {
+      beforeEach(() => db("shopping_list").truncate());
+      it(`getAllItems() resolves an empty array`, () => {
+        return ShoppingListService.getAllItems(db).then(actual => {
+          expect(actual).to.eql([]);
+        });
+      });
 
-    //   it(`insertItem() inserts a new Item and resolves the new Item with an 'id'`, () => {
-    //     const newItem = {
-    //       name: "PretenderSteaks",
-    //       category: "Lunch",
-    //       checked: true,
-    //       price: "2.50",
-    //       date_added: new Date("2020-03-01T00:00:00.000Z")
-    //     };
+      it(`insertItem() inserts a new Item and resolves the new Item with an 'id'`, () => {
+        const newItem = {
+          name: "PretenderSteaks",
+          category: "Lunch",
+          checked: true,
+          price: "2.50",
+          date_added: new Date("2020-03-01T00:00:00.000Z")
+        };
 
-    //     return ShoppingListService.insertItem(db, newItem).then(actual => {
-    //       expect(actual).to.eql({
-    //         id: 1,
-    //         name: newItem.name,
-    //         category: newItem.category,
-    //         checked: newItem.checked,
-    //         price: newItem.price,
-    //         date_added: newItem.date_added
-    //       });
-    //     });
-    //   });
-    // });
+        return ShoppingListService.insertItem(db, newItem).then(actual => {
+          expect(actual).to.eql({
+            id: 1,
+            name: newItem.name,
+            category: newItem.category,
+            checked: newItem.checked,
+            price: newItem.price,
+            date_added: newItem.date_added
+          });
+        });
+      });
+    });
 
     // end of line
   });

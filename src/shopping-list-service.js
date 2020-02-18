@@ -2,6 +2,9 @@ const ShoppingListService = {
   getAllItems(knex) {
     return knex.select("*").from("shopping_list");
   },
+  getNothing(knex) {
+    return []
+  },
   insertItem(knex, newItem) {
     return knex
       .insert(newItem)
